@@ -26,7 +26,7 @@ export class RegistrationComponent implements OnInit {
   ) {
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/login']);
     }
   }
 
@@ -34,8 +34,8 @@ export class RegistrationComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       username: ['', Validators.required],
       email: ['', Validators.required],
-      firstName: [''],
-      lastName: [''],
+      // firstname: [''],
+      // lastname: [''],
       password: ['', [Validators.required, Validators.minLength(6)]],
       // confirmpassword: ['', [Validators.required, Validators.minLength(6)]]
     });

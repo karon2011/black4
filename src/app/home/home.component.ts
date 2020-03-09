@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.loadAllUsers();
+    // this.loadAllUsers();
   }
 
   ngOnDestroy() {
@@ -39,9 +39,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   //     });
   // }
 
-  private loadAllUsers() {
-    this.userService.getAll().pipe(first()).subscribe(users => {
-      this.users = users;
-    });
-  }
+  // private loadAllUsers() {
+  //   this.userService.getAllUsers().pipe(first()).subscribe(users => {
+  //     this.users = users;
+  //   });
+  // }
 }

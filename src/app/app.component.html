@@ -1,10 +1,16 @@
-<!-- nav -->
-<!--<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser"> -->
-<nav class="navbar navbar-expand navbar-dark bg-dark">
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser"> 
   <div class="navbar-nav">
       <a class="nav-item nav-link" routerLink="/">Home</a>
-      <a class="nav-item nav-link" (click)="logout()">Login</a>
+      <!-- <a class="nav-item nav-link" (click)="login()">Login</a> -->
       <a class="nav-item nav-link" (click)="logout()">Logout</a> 
+      <!-- <a class="nav-item nav-link" routerLink="/register">Registration</a> -->
+  </div>
+</nav>
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="!currentUser"> 
+<!--<nav class="navbar navbar-expand navbar-dark bg-dark">-->
+  <div class="navbar-nav">
+      <a class="nav-item nav-link" routerLink="/">Home</a>
+      <a class="nav-item nav-link" (click)="login()" routerLink="['/login']">Login</a>
       <a class="nav-item nav-link" routerLink="/register">Registration</a>
   </div>
 </nav>
@@ -23,7 +29,7 @@
 
 <!-- credits -->
 <div class="text-center">
-  <h2>Black 4 Media</h2>
+  <h2>{{ title }}</h2>
 </div>
 
 

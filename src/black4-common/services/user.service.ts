@@ -3,48 +3,44 @@ import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  // private usersUrl = 'api/users';
-  private usersUrl = 'http://127.0.0.1:8000/users';
-
-
   constructor(
     private http: HttpClient
   ) { }
 
-  getAll() {
-    return this.http.get<User[]>(`${config.apiUrl}/users`);
+  getAllUsers() {
+    return this.http.get<User[]>(`${environment.apiUrl}/users`);
   }
 
   /** GET Users from the server */
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.usersUrl)
+    return this.http.get<User[]>(`${environment.apiUrl}/users`)
       .pipe(
-        // tap(_ => this.log('fetched heroes')),
         catchError(this.handleError<User[]>('getUsers', []))
       );
   }
 
-  // getById(id: number) {
-  //   return this.http.get(`${config.apiUrl}/users/${id}`);
-  // }
-
-  register(user: User) {
-    return this.http.post(`${config.apiUrl}/users/register`, user);
+  getUserById(id: number) {
+    return this.http.get(`${environment.apiUrl}/users/${id}`);
   }
 
-  // update(user: User) {
-  //   return this.http.put(`${config.apiUrl}/users/${user.id}`, user);
-  // }
+  register(user: User) {
+    return this.http.post(`${environment.apiUrl}/register`, user);
+  }
 
-  // delete(id: number) {
-  //   return this.http.delete(`${config.apiUrl}/users/${id}`);
-  // }
+  update(user: User) {
+    return this.http.put(`${environment.apiUrl}/users/${user.id}`, user);
+  }
+
+  delete(id: number) {
+    return this.http.delete(`${environment.apiUrl}/users/${id}`);
+  }
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

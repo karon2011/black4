@@ -11,7 +11,7 @@ import { Author } from '../models/author';
 export class AuthorService {
 
   // private authorsUrl = 'api/authors';
-  private authorsUrl = 'http://127.0.0.1:8000/authors';
+  private authorsUrl = 'http://127.0.0.1:8000/api/authors';
 
   constructor(
     // private alertService: AlertService,

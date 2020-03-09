@@ -9,7 +9,7 @@ import { AuthenticationService } from 'src/black4-common/services/authentication
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'black4';
+  title = 'Black 4';
   currentUser: User;
 
   constructor(

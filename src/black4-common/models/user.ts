@@ -3,9 +3,14 @@ export class User {
     username: string;
     email: string;
     password: string;
-    firstname: string;
-    lastname: string;
     roles: [];
-    birthday?: Date;
+    // firstname: string;
+    // lastname: string;
+    // birthday?: Date;
     token?: string;
+    // apiTokens?: {
+    //     id: number,
+    //     token: string,
+    //     expiresAt: Date,
+    // };
 }

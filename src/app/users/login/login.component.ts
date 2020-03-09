@@ -53,6 +53,7 @@ export class LoginComponent implements OnInit {
       return;
     }
 
+    console.log("onSubmit");
     this.loading = true;
     this.authenticationService.login(this.f.username.value, this.f.password.value)
       .pipe(
@@ -60,12 +61,17 @@ export class LoginComponent implements OnInit {
       )
       .subscribe(
         data => {
+          console.log("data ??", data);
+          // localStorage.setItem('userToken', data.access_token);
           this.router.navigate([this.returnUrl]);
         },
         error => {
+          console.log("error", error);
+
           this.alertService.error(error);
           this.loading = false;
-        });
+        }
+      );
   }
 
 }

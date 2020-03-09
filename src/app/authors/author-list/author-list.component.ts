@@ -22,6 +22,8 @@ export class AuthorListComponent implements OnInit {
   getAuthors(): void {
     this.authorService.getAuthors()
       .subscribe(authors => {
+        console.log("authors", authors);
+        
         this.authors = authors;
       })
   }
