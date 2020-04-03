@@ -16,7 +16,7 @@ import { AlertComponent } from './alert/alert.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material.module';
 import { AuthorListComponent } from './authors/author-list/author-list.component';
-import { AuthorEditComponent } from './authors/author-edit/author-edit.component';
+import { AuthorShowComponent } from './authors/author-show/author-show.component';
 import { UserListComponent } from './users/user-list/user-list.component';
 
 @NgModule({
@@ -27,7 +27,7 @@ import { UserListComponent } from './users/user-list/user-list.component';
     LoginComponent,
     AlertComponent,
     AuthorListComponent,
-    AuthorEditComponent,
+    AuthorShowComponent,
     UserListComponent
   ],
   imports: [

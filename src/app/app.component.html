@@ -1,36 +1,59 @@
-<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser"> 
-  <div class="navbar-nav">
+<div class="bg">
+
+  <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
+    <div class="navbar-nav">
+      <img class="navbar-brand" src="assets/images/guitar_logo.png" alt="">
+      <a href="#" class="navbar-brand"> Black 4 </a>
       <a class="nav-item nav-link" routerLink="/">Home</a>
       <!-- <a class="nav-item nav-link" (click)="login()">Login</a> -->
-      <a class="nav-item nav-link" (click)="logout()">Logout</a> 
+      <a class="nav-item nav-link" (click)="logout()">Logout</a>
       <!-- <a class="nav-item nav-link" routerLink="/register">Registration</a> -->
-  </div>
-</nav>
-<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="!currentUser"> 
-<!--<nav class="navbar navbar-expand navbar-dark bg-dark">-->
-  <div class="navbar-nav">
+      <a class="nav-item nav-link" routerLink="/authors">Authors</a>
+    </div>
+  </nav>
+  <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="!currentUser">
+    <!--<nav class="navbar navbar-expand navbar-dark bg-dark">-->
+    <div class="navbar-nav">
+      <img class="navbar-brand" src="assets/images/guitar_logo.png" alt="">
+      <a href="#" class="navbar-brand"> Black 4 </a>
       <a class="nav-item nav-link" routerLink="/">Home</a>
-      <a class="nav-item nav-link" (click)="login()" routerLink="['/login']">Login</a>
+      <a class="nav-item nav-link" routerLink="/login">Login</a>
       <a class="nav-item nav-link" routerLink="/register">Registration</a>
-  </div>
-</nav>
+      <a class="nav-item nav-link" routerLink="/authors">Authors</a>
+    </div>
+  </nav>
 
-<!-- main app container -->
-<div class="jumbotron">
+  <!-- main app container -->
   <div class="container">
-      <div class="row">
-          <div class="col-sm-6 offset-sm-3">
-              <app-alert></app-alert>
-              <router-outlet></router-outlet>
-          </div>
+    <div>
+      <!-- <div class="row"> -->
+      <div>
+        <app-alert></app-alert>
+        <router-outlet></router-outlet>
       </div>
+      <!-- </div> -->
+    </div>
   </div>
+
+  <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+    <div class="container text-center">
+      <small class="text-white">Copyright &copy; Black 4 Edition - 2020 France</small>
+    </div>
+  </footer>
+
+
 </div>
 
-<!-- credits -->
-<div class="text-center">
-  <h2>{{ title }}</h2>
-</div>
-
-
-
+<style>
+  .bg {
+    width: 100%;
+    height: 100%;
+    background: url('../assets/images/background_guitar.png') no-repeat center center fixed;
+    background-size: 100% 100%;
+    background-position: top center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+  }
+</style>

@@ -1,5 +1,22 @@
+<div class="container-fluid">
+  <div class="row card-group">
+    <div class="col-4" *ngFor="let author of this.authors">
+      <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{ author.name }}</h5>
+          <h6 class="card-info text-muted">{{ author.origin }}</h6>
+          <p class="card-text">comments...</p>
+        </div>
+        <div class="card-footer">
+          <!-- <small class="text-muted" (click)="gotoAuthor(author)">See</!-->
+          <img (click)="gotoAuthor(author)" src="../../../assets/icons/eye.png" alt="eye">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
-<ul>
-  <li *ngFor="let author of authors">{{ author.name }}</li>
-</ul>
+<!-- ['/authors', authorId, 'edit'] -->
+<!-- [routerLink]="['/authors', authorId, '/edit']" -->

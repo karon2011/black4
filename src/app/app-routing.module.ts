@@ -7,16 +7,25 @@ import { LoginComponent } from './users/login/login.component';
 import { RegistrationComponent } from './users/registration/registration.component';
 import { AuthorListComponent } from './authors/author-list/author-list.component';
 import { UserListComponent } from './users/user-list/user-list.component';
+import { AuthorShowComponent } from './authors/author-show/author-show.component';
 
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+  // { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistrationComponent },
-  { path: 'authors', component: AuthorListComponent },
+  { path: 'authors', component: AuthorListComponent,
+    // children: [
+    //   {
+    //     path: ':id/edit',
+    //     component: AuthorEditComponent
+    //   }
+    // ],
+  },
+  { path: 'authors/:id/show', component:  AuthorShowComponent },
   { path: 'users', component: UserListComponent },
   // otherwise redirect to home
-  { path: '**', redirectTo: '' }
+  // { path: '**', redirectTo: 'register' }
 ];
 
 @NgModule({

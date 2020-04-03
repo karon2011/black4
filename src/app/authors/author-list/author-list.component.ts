@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthorService } from 'src/black4-common/services/author.service';
 import { Author } from 'src/black4-common/models/author';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-author-list',
@@ -9,23 +10,29 @@ import { Author } from 'src/black4-common/models/author';
 })
 export class AuthorListComponent implements OnInit {
 
-  authors: Author[];
+  public authors: Author[];
 
   constructor(
     private authorService: AuthorService,
-  ) { }
+    private route: ActivatedRoute,
+    private router: Router,
+  ) {
+  }
 
   ngOnInit() {
     this.getAuthors();
   }
 
   getAuthors(): void {
-    this.authorService.getAuthors()
-      .subscribe(authors => {
-        console.log("authors", authors);
-        
-        this.authors = authors;
-      })
+    this.authorService.getAllAuthors()
+      .subscribe(data => {
+        this.authors = data;
+        console.log("data", data);
+      });
   }
 
+  gotoAuthor(author: Author) {
+    let authorId = author ? author.id : null;
+    this.router.navigate(['/authors', authorId, 'show']);
+  }
 }

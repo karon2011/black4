@@ -1,38 +1,59 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { AlertService } from './alert.service';
 import { Author } from '../models/author';
+import { environment } from 'src/environments/environment';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    // token ?
+    // 'Authorization': 'my-auth-token'
+  })
+};
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthorService {
 
-  // private authorsUrl = 'api/authors';
-  private authorsUrl = 'http://127.0.0.1:8000/api/authors';
+
 
   constructor(
     // private alertService: AlertService,
-    private http: HttpClient,
+    private http: HttpClient
   ) { }
 
   /** GET Authors from the server */
-  getAuthors(): Observable<Author[]> {
-    return this.http.get<Author[]>(this.authorsUrl)
+  getAllAuthors(): Observable<Author[]> {
+    return this.http.get<Author[]>(`${environment.apiUrl}/authors`)
       .pipe(
-        // tap(_ => this.log('fetched heroes')),
         catchError(this.handleError<Author[]>('getAuthors', []))
       );
   }
 
+  getAuthorById(authorId: number): Observable<Author> {
+    return this.http.get<Author>(`${environment.apiUrl}/authors/${authorId}`)
+      .pipe(
+        catchError(this.handleError<Author>(`getAuthors id=${authorId}`))
+      );
+  }
+
+  updateAuthor(authorId: number, author: Author): Observable<Author> {
+    return this.http.put<Author>(`${environment.apiUrl}/authors/${authorId}/edit`, author, httpOptions)
+      .pipe(
+        catchError(this.handleError<Author>(`getAuthors id=${authorId}`))
+      )
+  }
+
   /**
-    * Handle Http operation that failed.
-    * Let the app continue.
-    * @param operation - name of the operation that failed
-    * @param result - optional value to return as the observable result
-    */
+   * Handle Http operation that failed.
+   * Let the app continue.
+   * @param operation - name of the operation that failed
+   * @param result - optional value to return as the observable result
+   */
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
@@ -44,13 +65,11 @@ export class AuthorService {
 
       // Let the app keep running by returning an empty result.
       return of(result as T);
-    }
+    };
   }
 
   // /** Log a HeroService message with the MessageService */
   // private log(message: string) {
   //   this.alertService.add(`HeroService: ${message}`);
   // }
-
-
 }
