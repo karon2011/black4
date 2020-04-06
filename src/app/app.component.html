@@ -1,33 +1,34 @@
 <div class="bg">
 
-  <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
     <div class="navbar-nav">
       <img class="navbar-brand" src="assets/images/guitar_logo.png" alt="">
-      <a href="#" class="navbar-brand"> Black 4 </a>
-      <a class="nav-item nav-link" routerLink="/">Home</a>
-      <!-- <a class="nav-item nav-link" (click)="login()">Login</a> -->
-      <a class="nav-item nav-link" (click)="logout()">Logout</a>
-      <!-- <a class="nav-item nav-link" routerLink="/register">Registration</a> -->
+      <a href="#" class="navbar-brand" routerLink="/home"> Black 4 </a>
+      <a class="nav-item nav-link" routerLink="/home">Home</a>
+      <a class="nav-item nav-link" routerLink="/login" *ngIf="!currentUser">Login</a>
+      <a class="nav-item nav-link" routerLink="/register"  *ngIf="!currentUser">Registration</a>
+      <a class="nav-item nav-link" (click)="logout()"  *ngIf="currentUser">Logout</a>
       <a class="nav-item nav-link" routerLink="/authors">Authors</a>
     </div>
   </nav>
-  <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="!currentUser">
-    <!--<nav class="navbar navbar-expand navbar-dark bg-dark">-->
+  <!-- <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="!currentUser">
     <div class="navbar-nav">
       <img class="navbar-brand" src="assets/images/guitar_logo.png" alt="">
       <a href="#" class="navbar-brand"> Black 4 </a>
-      <a class="nav-item nav-link" routerLink="/">Home</a>
+      <a class="nav-item nav-link" routerLink="/home">Home</a>
       <a class="nav-item nav-link" routerLink="/login">Login</a>
       <a class="nav-item nav-link" routerLink="/register">Registration</a>
       <a class="nav-item nav-link" routerLink="/authors">Authors</a>
     </div>
-  </nav>
+  </nav> -->
 
   <!-- main app container -->
-  <div class="container">
+  <div class="section">
     <div>
       <!-- <div class="row"> -->
       <div>
+
+        <!-- <app-home></app-home> -->
         <app-alert></app-alert>
         <router-outlet></router-outlet>
       </div>
@@ -46,11 +47,10 @@
 
 <style>
   .bg {
+    background: url('../assets/images/home/home_uni.png') no-repeat;
     width: 100%;
-    height: 100%;
-    background: url('../assets/images/background_guitar.png') no-repeat center center fixed;
-    background-size: 100% 100%;
-    background-position: top center;
+    height: 4000px;
+    background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;

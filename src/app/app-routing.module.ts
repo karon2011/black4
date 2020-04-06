@@ -8,10 +8,12 @@ import { RegistrationComponent } from './users/registration/registration.compone
 import { AuthorListComponent } from './authors/author-list/author-list.component';
 import { UserListComponent } from './users/user-list/user-list.component';
 import { AuthorShowComponent } from './authors/author-show/author-show.component';
+import { AuthorEditComponent } from './authors/author-edit/author-edit.component';
 
 
 const routes: Routes = [
-  // { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+  // { path: 'home', component: HomeComponent},
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistrationComponent },
   { path: 'authors', component: AuthorListComponent,
@@ -23,9 +25,10 @@ const routes: Routes = [
     // ],
   },
   { path: 'authors/:id/show', component:  AuthorShowComponent },
+  { path: 'authors/:id/edit', component:  AuthorEditComponent },
   { path: 'users', component: UserListComponent },
   // otherwise redirect to home
-  // { path: '**', redirectTo: 'register' }
+  { path: '**', redirectTo: 'home' }
 ];
 
 @NgModule({

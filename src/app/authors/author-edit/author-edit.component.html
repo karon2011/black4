@@ -1,3 +1,43 @@
-<p>
-  author-edit works!
-</p>
+<div class="text-light">
+  <h3>Author's Name</h3>
+</div>
+<div>
+  <form class="text-light" [formGroup]="authorForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label>
+        Name
+        <input type="text" formControlName="name" required>
+      </label>
+    </div>
+    <div>
+      <label>
+        Origin
+        <input type="text" formControlName="origin">
+      </label>
+    </div>
+
+    <!-- <div formGroupName="records">
+      <h5>Records</h5>
+      <div>
+        <label>
+          Title:
+          <input type="text" formControlName="title">
+        </label>
+      </div>
+      <div>
+        <label>
+          Date:
+          <input type="text" formControlName="date">
+        </label>
+      </div>
+
+    </div> -->
+
+
+    <button class="btn btn-primary" type="submit" [disabled]="!authorForm.valid">Submit</button>
+    <p>
+      Form Value: {{ authorForm.value | json }}
+      Form Status: {{ authorForm.status }}
+    </p>
+  </form>
+</div>

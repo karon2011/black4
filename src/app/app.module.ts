@@ -18,6 +18,7 @@ import { MaterialModule } from './material.module';
 import { AuthorListComponent } from './authors/author-list/author-list.component';
 import { AuthorShowComponent } from './authors/author-show/author-show.component';
 import { UserListComponent } from './users/user-list/user-list.component';
+import { AuthorEditComponent } from './authors/author-edit/author-edit.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { UserListComponent } from './users/user-list/user-list.component';
     AlertComponent,
     AuthorListComponent,
     AuthorShowComponent,
+    AuthorEditComponent,
     UserListComponent
   ],
   imports: [

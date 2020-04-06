@@ -1,0 +1,30 @@
+.container-fluid {
+    min-height: 100%;
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  img { 
+      width: 50%; 
+      margin: auto; 
+    }
+
+.carousel {
+    margin: 0 auto;
+    /* margin-top: 10px; */
+    /* position: absolute; */
+}
+
+
+/* .bg {
+    background: url('../../assets/images/home/home_uni.png') no-repeat center center fixed;
+    height: 1920px;
+    width: 100;
+    background-size: 100% 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+  } */
