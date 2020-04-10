@@ -10,6 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AuthorListComponent implements OnInit {
 
+  public loading = true;
   public authors: Author[];
 
   constructor(
@@ -24,15 +25,14 @@ export class AuthorListComponent implements OnInit {
   }
 
   getAuthors(): void {
+    this.loading = true;
     this.authorService.getAllAuthors()
       .subscribe(data => {
         this.authors = data;
         console.log("data", data);
+        this.loading = false;
+
       });
   }
 
-  gotoAuthor(author: Author) {
-    let authorId = author ? author.id : null;
-    this.router.navigate(['/authors', authorId, 'show']);
-  }
 }

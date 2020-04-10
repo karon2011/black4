@@ -1,23 +1,61 @@
 #sticky-footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    /* background-color: red; */
-    /* color: white; */
-    text-align: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  /* background-color: red; */
+  /* color: white; */
+  text-align: center;
 }
 
 html {
-    min-width: 100%;
-    min-height: 100%;
-    background-image: url(http://www.example.com/somelargeimage.jpg);
-    background-position: top center;
-    background-color: #000;
-  }
-  
-  body {
-    width: 1054px;
-    height: 1054px;
-    background-color: #FFF;
-  }  
+  min-width: 100%;
+  min-height: 100%;
+  background-image: url(http://www.example.com/somelargeimage.jpg);
+  background-position: top center;
+  background-color: #000;
+}
+
+body {
+  width: 1054px;
+  height: 1054px;
+  background-color: #FFF;
+}
+
+.navbar {
+  justify-content: space-between;
+}
+
+span {
+  padding-right: 1rem;
+}
+
+mat-sidenav-container {
+  height: 100%;
+}
+
+mat-sidenav,
+mat-sidenav-content {
+  padding: 16px;
+}
+
+mat-sidenav {
+  /* height: 800px;
+  background-color: blue;
+  width: 300px; */
+
+  width: 400px;
+  height: 800px;
+  margin: 15px;
+  border: 1px solid #555;
+}
+
+.titre {
+  font-family: 'Lucida Handwriting', Georgia, 'Times New Roman', Times, serif;
+  font-weight: 500;
+  height: 15px;
+  color: black;
+  font-size: xx-large;
+  letter-spacing: 2px;
+  margin-left: 20px;
+}

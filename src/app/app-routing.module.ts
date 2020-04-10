@@ -12,20 +12,30 @@ import { AuthorEditComponent } from './authors/author-edit/author-edit.component
 
 
 const routes: Routes = [
-  // { path: 'home', component: HomeComponent},
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistrationComponent },
-  { path: 'authors', component: AuthorListComponent,
-    // children: [
-    //   {
-    //     path: ':id/edit',
-    //     component: AuthorEditComponent
-    //   }
-    // ],
+  {
+    path: 'authors',
+    children: [
+      {
+        path: '',
+        component: AuthorListComponent,
+      },
+      {
+        path: ':id/show',
+        component: AuthorShowComponent
+      },
+      {
+        path: ':id/edit',
+        component: AuthorEditComponent
+      },
+      {
+        path: 'new/edit',
+        component: AuthorEditComponent
+      }
+    ],
   },
-  { path: 'authors/:id/show', component:  AuthorShowComponent },
-  { path: 'authors/:id/edit', component:  AuthorEditComponent },
   { path: 'users', component: UserListComponent },
   // otherwise redirect to home
   { path: '**', redirectTo: 'home' }

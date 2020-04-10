@@ -15,7 +15,8 @@ export class AuthorShowComponent implements OnInit {
   constructor(
     private authorService: AuthorService,
     private route: ActivatedRoute,
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     this.getAuthor();
@@ -23,7 +24,7 @@ export class AuthorShowComponent implements OnInit {
 
   getAuthor(): void {
     const authorId = +this.route.snapshot.paramMap.get('id');
-    console.log('id', authorId);
+    console.log('id in show', authorId);
     this.authorService
       .getAuthorById(authorId)
       .subscribe(

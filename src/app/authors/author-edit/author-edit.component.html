@@ -1,22 +1,17 @@
-<div class="text-light">
-  <h3>Author's Name</h3>
-</div>
-<div>
-  <form class="text-light" [formGroup]="authorForm" (ngSubmit)="onSubmit()">
+<form class="author-form" [formGroup]="authorForm" (ngSubmit)="onSubmit()">
+  <mat-form-field class="author-full-width">
     <div>
-      <label>
-        Name
-        <input type="text" formControlName="name" required>
-      </label>
+      <mat-label>Name</mat-label>
+      <input matInput type="text" formControlName="name" placeholder="Name">
     </div>
+  </mat-form-field>
+  <mat-form-field class="author-full-width">
     <div>
-      <label>
-        Origin
-        <input type="text" formControlName="origin">
-      </label>
+      <mat-label>Origin</mat-label>
+      <input matInput type="text" formControlName="origin" placeholder="Origin">
     </div>
-
-    <!-- <div formGroupName="records">
+  </mat-form-field>
+  <!-- <div formGroupName="records">
       <h5>Records</h5>
       <div>
         <label>
@@ -30,14 +25,17 @@
           <input type="text" formControlName="date">
         </label>
       </div>
-
     </div> -->
 
-
-    <button class="btn btn-primary" type="submit" [disabled]="!authorForm.valid">Submit</button>
-    <p>
-      Form Value: {{ authorForm.value | json }}
-      Form Status: {{ authorForm.status }}
-    </p>
-  </form>
+  <!-- <button class="btn btn-primary" type="submit" [disabled]="!authorForm.valid">Submit</button>
+    <button class="btn btn-danger" (click)="deleteAuthor()">Delete Author</button> -->
+  <div>
+    <button mat-flat-button type="submit" [disabled]="!authorForm.valid">Submit</button>
+  </div>
+  <div>
+    <button color="warn" mat-raised-button (click)="deleteAuthor()">Delete Author</button>
+  </div>
+</form>
+<div *ngIf="!author">
+  <p class="text-light">Edit New author</p>
 </div>

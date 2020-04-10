@@ -1,20 +1,19 @@
 <div class="panel panel-primary panel-transparent" *ngIf="author">
   <div class="panel panel-primary">
-
     <div class="panel-heading">
-      <h3 class="panel-title text-light">{{ author.name }}</h3>
-      <h6 class="panel-title text-light">{{ author.origin }}</h6>
+      <label>Name</label>
+      <div class="mat-title">{{ author.name }}</div>
+      <label for="">Origin</label>
+      <div class="mat-title">{{ author.origin }}</div>
     </div>
     <div class="panel-body text-light">
       <p>
         Lorem ipsum dolor sit amet consectetur ?
       </p>
-
     </div>
-
   </div>
   <div>
-    <button type="button" class="btn btn-primary" >Update</button>
+    <button type="button" class="btn btn-primary" routerLink='../edit'>Update</button>
   </div>
 </div>
 

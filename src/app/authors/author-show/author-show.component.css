@@ -5,3 +5,7 @@ body {
     background-size: cover;
     -o-background-size: cover;
   }
+
+  button {
+    margin-right: 2 rem;
+  }

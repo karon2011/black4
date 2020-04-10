@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable, of, BehaviorSubject, Subject } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { AlertService } from './alert.service';
 import { Author } from '../models/author';
@@ -18,8 +18,6 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthorService {
-
-
 
   constructor(
     // private alertService: AlertService,
@@ -41,11 +39,19 @@ export class AuthorService {
       );
   }
 
-  updateAuthor(authorId: number, author: Author): Observable<Author> {
-    return this.http.put<Author>(`${environment.apiUrl}/authors/${authorId}/edit`, author, httpOptions)
+  createAuthor(author: Author): Observable<Author> {
+    return this.http.post<Author>(`${environment.apiUrl}/authors/new/edit`, author)
+  }
+
+  updateAuthor(author: Author): Observable<Author> {
+    return this.http.put<Author>(`${environment.apiUrl}/authors/${author.id}/edit`, author, httpOptions)
       .pipe(
-        catchError(this.handleError<Author>(`getAuthors id=${authorId}`))
+        catchError(this.handleError<Author>(`getAuthors id=${author.id}`))
       )
+  }
+
+  deleteAuthor(authorId: number): Observable<Author> {
+    return this.http.delete<Author>(`${environment.apiUrl}/authors/${authorId}`)
   }
 
   /**
