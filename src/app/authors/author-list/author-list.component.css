@@ -8,17 +8,18 @@
   margin-right: 0;
 }
 
-.mat-card {
+/* .mat-card {
   width: 33%;
-}
+} */
+
 .author-card {
-  display: inline-flex;
+  display: flex;
   /* display: flex; */
-  flex-direction: column;
-  width: 350px;
-  height: 200px;
-  margin-top: 40px;
-  margin-left: 20px;
+  flex-direction: row;
+  width: 30%;
+  height: 40%;
+  /* margin-top: 40px;
+  margin-left: 20px; */
 }
 
 .mat-card-content {
@@ -33,4 +34,8 @@
 
 .card-group {
   width: 100%
+}
+
+mat-grid-tile {
+  background-color: #c2185b;
 }

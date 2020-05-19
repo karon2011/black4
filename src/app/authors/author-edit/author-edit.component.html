@@ -1,41 +1,25 @@
-<form class="author-form" [formGroup]="authorForm" (ngSubmit)="onSubmit()">
-  <mat-form-field class="author-full-width">
-    <div>
-      <mat-label>Name</mat-label>
-      <input matInput type="text" formControlName="name" placeholder="Name">
-    </div>
-  </mat-form-field>
-  <mat-form-field class="author-full-width">
-    <div>
-      <mat-label>Origin</mat-label>
-      <input matInput type="text" formControlName="origin" placeholder="Origin">
-    </div>
-  </mat-form-field>
-  <!-- <div formGroupName="records">
-      <h5>Records</h5>
-      <div>
-        <label>
-          Title:
-          <input type="text" formControlName="title">
-        </label>
-      </div>
-      <div>
-        <label>
-          Date:
-          <input type="text" formControlName="date">
-        </label>
-      </div>
-    </div> -->
+<mat-grid-list cols="2" rowHeight="2:1">
+  <mat-grid-tile>
+    <form class="author-form" [formGroup]="authorForm" (ngSubmit)="onSubmit()">
+      <mat-form-field class="author-full-width" floatLabel="auto" appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" required>
+      </mat-form-field>
+      <mat-form-field class="author-full-width" floatLabel="auto" appearance="outline">
+        <mat-label>Origin</mat-label>
+        <input matInput type="text" formControlName="origin" required>
+      </mat-form-field>
 
-  <!-- <button class="btn btn-primary" type="submit" [disabled]="!authorForm.valid">Submit</button>
-    <button class="btn btn-danger" (click)="deleteAuthor()">Delete Author</button> -->
-  <div>
-    <button mat-flat-button type="submit" [disabled]="!authorForm.valid">Submit</button>
-  </div>
-  <div>
-    <button color="warn" mat-raised-button (click)="deleteAuthor()">Delete Author</button>
-  </div>
-</form>
-<div *ngIf="!author">
-  <p class="text-light">Edit New author</p>
-</div>
+      <button mat-flat-button align="end" type="submit" [disabled]="!authorForm.valid">Submit</button>
+      <button mat-flat-button [routerLink]="['/authors', author.id, 'show']">Cancel</button>
+      <button color="warn" mat-raised-button (click)="deleteAuthor()" *ngIf="author">Delete Author</button>
+    </form>
+    <!-- <div *ngIf="!author">
+      <p class="text-light">Edit New author</p>
+    </div> -->
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <p>Tile 2</p>
+  </mat-grid-tile>
+
+</mat-grid-list>

@@ -1,30 +1,41 @@
-<div class="panel panel-primary panel-transparent" *ngIf="author">
-  <div class="panel panel-primary">
-    <div class="panel-heading">
-      <label>Name</label>
-      <div class="mat-title">{{ author.name }}</div>
-      <label for="">Origin</label>
-      <div class="mat-title">{{ author.origin }}</div>
-    </div>
-    <div class="panel-body text-light">
-      <p>
-        Lorem ipsum dolor sit amet consectetur ?
-      </p>
-    </div>
-  </div>
-  <div>
-    <button type="button" class="btn btn-primary" routerLink='../edit'>Update</button>
-  </div>
-</div>
+<mat-grid-list cols="2" rowHeight="2:1" *ngIf="author">
+  <mat-grid-tile>
+    <mat-card>
+      <mat-card-header>
+        <div mat-card-avatar class="author-header-image">
+          <mat-icon color="primary">photo_camera</mat-icon>
+        </div>
+        <mat-card-title>{{ author.name }}</mat-card-title>
+        <mat-card-subtitle>{{ author.origin }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        {{ author.name }} is a ... Lorem ipsum dolor sit amet consectetur ?
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button color="warn" mat-flat-button routerLink='../edit'>Update</button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <!-- <p>Tile 2</p> -->
+    <mat-card>
 
-<!-- <div class="container">
-    <div class="card border-0 shadow my-5">
-      <div class="card-body p-5">
-        <h1 class="font-weight-light">Fixed Full Page Background Image</h1>
-        <p class="lead">In this snippet, the background image is fixed to the body element. Content on the page will scroll, but the image will remain in a fixed position!</p>
-        <p class="lead">Scroll down...</p>
-        <div style="height: 700px"></div>
-        <p class="lead mb-0">You've reached the end!</p>
-      </div>
-    </div>
-  </div> -->
+      <mat-card-header>
+        <!-- <div mat-card-avatar class="author-header-image">
+          <mat-icon color="primary">photo_camera</mat-icon>
+        </div>
+        <mat-card-title>{{ author.name }}</mat-card-title>
+        <mat-card-subtitle>{{ author.origin }}</mat-card-subtitle> -->
+      </mat-card-header>
+      <mat-card-content>
+        <!-- <p>{{ author.name }} is a ... Lorem ipsum dolor sit amet consectetur ?</p> -->
+      </mat-card-content>
+
+
+      <mat-card-actions align="end">
+        <!-- <button color="warn" mat-flat-button routerLink='../edit'>Update</button> -->
+      </mat-card-actions>
+
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

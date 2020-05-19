@@ -1,9 +1,11 @@
+import { Role } from './role';
+
 export class User {
     id: number;
     username: string;
     email: string;
     password: string;
-    roles: [];
+    roles: any;
     // firstname: string;
     // lastname: string;
     // birthday?: Date;

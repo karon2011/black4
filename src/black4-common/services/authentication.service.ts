@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../models/user';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { map, first } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-
+import { take } from 'rxjs/operators';
 @Injectable({
     providedIn: 'root'
 })
@@ -19,24 +19,42 @@ export class AuthenticationService {
     }
 
     public get currentUserValue(): User {
+        console.log("currentUserSubject", this.currentUserSubject);
+        
         return this.currentUserSubject.value;
     }
 
     login(username: string, password: string) {
-        return this.http.post<User>(`${environment.apiUrl}/login_check`,
-            { username, password })
+        return this.http.post<User>(`${environment.apiUrl}/login_check`, { username, password })
             .pipe(
                 map(data => {
+                    console.log("data in AuthenticationService", data);
+
                     // login successful if there's a jwt token in the response
                     if (data && data.token) {
+                        console.log("data ???", data);
+                        let jwtData = data.token.split('.')[1];
+                        let decodedJwtJsonData = window.atob(jwtData)
+                        let decodedJwtData = JSON.parse(decodedJwtJsonData)
+
                         // store user details and jwt token in local storage to keep user logged in between page refreshes
-                        localStorage.setItem('currentUser', JSON.stringify(data));
-                        this.currentUserSubject.next(data);
+                        localStorage.setItem('currentUser', JSON.stringify(decodedJwtData));
+                        this.currentUserSubject.next(decodedJwtData);
                     }
-                    localStorage.setItem('currentUser', JSON.stringify(data));
+                    // localStorage.setItem('currentUser', JSON.stringify(data));
                     return data;
                 }));
     }
+
+    // getUserRoles(user: User): Observable<User> {
+    //     return this.http.get<User>(`${environment.apiUrl}/users/${user.id}/roles`).pipe(
+    //         take(1),
+    //         map(role => {
+    //             user.role = role;
+    //             return user;
+    //         })
+    //     )
+    // }
 
     logout() {
         // remove user from local storage to log user out

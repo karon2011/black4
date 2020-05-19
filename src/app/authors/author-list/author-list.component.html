@@ -1,59 +1,39 @@
-<div class="container">
+<!-- <mat-table [dataSource]="dataSource">
+  </mat-table> -->
+<mat-grid-list cols="5" rowHeight="100" *ngIf="authors" gutterSize="20">
+  <mat-grid-tile color="primary" [colspan]="5" [rowspan]="1">
+    Authors
+  </mat-grid-tile>
+  <mat-spinner class="spinner" *ngIf="loading"></mat-spinner>
+  <mat-grid-tile [colspan]="1" [rowspan]="10">
 
-  <!-- <mat-grid-list cols="2" rowHeight="2:1"> -->
-    <mat-spinner class="spinner" *ngIf="loading"></mat-spinner>
-    <div class="row card-group" *ngIf="authors">
-      <div *ngFor="let author of this.authors">
-        <mat-card class="author-card">
-          <mat-card-header>
-            <div mat-card-avatar class="author-header-image">
-              <mat-icon color="primary">photo_camera</mat-icon>
-            </div>
-            <mat-card-title>{{ author.name }}</mat-card-title>
-            <mat-card-subtitle>{{ author.origin }}</mat-card-subtitle>
-          </mat-card-header>
-          <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
-          <mat-card-content>
-            <p>{{ author.name }} is a ... comments</p>
-          </mat-card-content>
-          <mat-card-actions>
-            <!-- <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button> -->
-            <mat-icon color="primary" [routerLink]="['/authors', author.id, 'show']">visibility</mat-icon>
-          </mat-card-actions>
-
-        </mat-card>
-      </div>
-    </div>
-    <div class="new-author">
-      <button  color="primary" mat-raised-button [routerLink]="['new/edit']">Add New Author</button>
-    </div>
-  <!-- </mat-grid-list> -->
-
-</div>
-
-
-
-
-
-
-<!-- 
-<div class="container-fluid" *ngIf="authors">
-  <div class="row card-group">
-    <div class="col-4" *ngFor="let author of this.authors">
-      <div class="card">
-        <div class="card-body">
-          <h6 class="card-info">{{ author.name }}</h6>
-          <h6 class="card-info text-muted">{{ author.origin }}</h6>
-          <p class="card-text">comments...</p>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="3" [rowspan]="10">
+    <mat-card class="author-card" *ngFor="let author of this.authors">
+      <mat-card-header>
+        <div mat-card-avatar class="author-header-image">
+          <mat-icon color="primary">photo_camera</mat-icon>
         </div>
-        <div class="card-footer">
-          <mat-icon color="primary" [routerLink]="['/authors', author.id, 'show']">visibility</mat-icon>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="text-right">
+        <mat-card-title>{{ author.name }}</mat-card-title>
+        <mat-card-subtitle>{{ author.origin }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{ author.name }} is a ... comments</p>
+      </mat-card-content>
+      <mat-card-actions align="end">
+
+        <mat-icon color="primary" [routerLink]="['/authors', author.id, 'show']">visibility</mat-icon>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+    ></mat-paginator>
+  <mat-grid-tile [colspan]="1" [rowspan]="10">
+
+  </mat-grid-tile>
+
+  <mat-grid-tile [colspan]="5" [rowspan]="1">
     <button color="primary" mat-raised-button [routerLink]="['new/edit']">Add New Author</button>
-  </div>
-</div> -->
+  </mat-grid-tile>
+</mat-grid-list>
+

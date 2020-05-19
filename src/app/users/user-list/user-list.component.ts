@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/black4-common/services/user.service';
 import { User } from 'src/black4-common/models/user';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-user-list',
@@ -16,11 +17,13 @@ export class UserListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.getUsers();
+    this.getUsers();
   }
 
   getUsers(): void {
     this.userService.getUsers()
+      .pipe(
+        first())
       .subscribe(users => {
         this.users = users;
       })

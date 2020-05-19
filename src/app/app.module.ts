@@ -16,11 +16,13 @@ import { RegistrationComponent } from './users/registration/registration.compone
 import { AlertComponent } from './alert/alert.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material.module';
-import { UserListComponent } from './users/user-list/user-list.component';
 import { AuthorListComponent } from './authors/author-list/author-list.component';
 import { AuthorShowComponent } from './authors/author-show/author-show.component';
 import { AuthorEditComponent } from './authors/author-edit/author-edit.component';
 import { ParallaxDirective } from './parallax.directive';
+import { UserListComponent } from './users/user-list/user-list.component';
+import { UserProfileComponent } from './users/user-profile/user-profile.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { ParallaxDirective } from './parallax.directive';
     AuthorShowComponent,
     AuthorEditComponent,
     UserListComponent,
-    ParallaxDirective
+    ParallaxDirective,
+    UserProfileComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

@@ -41,7 +41,7 @@ export class AuthorEditComponent implements OnInit {
     this.authorForm = this.fb.group({
       id: this.route.snapshot.params.id,
       name: ['', Validators.required],
-      origin: [''],
+      origin: ['', Validators.required],
       // records: this.fb.array([
       //   this.fb.group({
       //     title: [''],

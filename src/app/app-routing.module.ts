@@ -9,10 +9,33 @@ import { AuthorListComponent } from './authors/author-list/author-list.component
 import { UserListComponent } from './users/user-list/user-list.component';
 import { AuthorShowComponent } from './authors/author-show/author-show.component';
 import { AuthorEditComponent } from './authors/author-edit/author-edit.component';
-
+import { UserProfileComponent } from './users/user-profile/user-profile.component';
+import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  {
+    path: 'home', component: HomeComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'admin', component: AdminComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: ["ROLE_ADMIN"],
+      canActivateChild: [AuthGuard],
+      children: [
+        // {
+        //   path: '',
+        //   pathMatch: 'full',
+        //   component: AdminComponent
+        // },
+        // {
+        //   path: 'categories',
+        //   component: CategoriesComponent
+        // },
+      ]
+    },
+  },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistrationComponent },
   {
@@ -36,7 +59,28 @@ const routes: Routes = [
       }
     ],
   },
-  { path: 'users', component: UserListComponent },
+  {
+    path: 'users',
+    children: [
+      {
+        path: '',
+        component: UserListComponent,
+      },
+      {
+        path: ':id/account',
+        component: UserProfileComponent,
+      },
+      // {
+      //   path: ':id/edit',
+      //   component: AuthorEditComponent
+      // },
+      // {
+      //   path: 'new/edit',
+      //   component: AuthorEditComponent
+      // }
+    ],
+  },
+
   // otherwise redirect to home
   { path: '**', redirectTo: 'home' }
 ];

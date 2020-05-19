@@ -13,6 +13,8 @@ import {
   MatSidenavModule,
   MatListModule,
   MatGridListModule,
+  MatTableModule,
+  MatPaginatorModule,
 } from '@angular/material';
 
 const material = []
@@ -32,6 +34,9 @@ const material = []
     MatProgressSpinnerModule,
     MatListModule,
     MatGridListModule,
+    MatPaginatorModule,
+    MatTableModule,
+
   ],
   exports: [
     MatFormFieldModule,
@@ -48,6 +53,10 @@ const material = []
     MatProgressSpinnerModule,
     MatListModule,
     MatGridListModule,
+    MatPaginatorModule,
+    MatTableModule,
+
+
   ]
 })
 export class MaterialModule { }

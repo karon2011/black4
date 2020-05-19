@@ -1,46 +1,47 @@
 <div class="bg">
-<!-- main app container -->
+  <!-- main app container -->
 
-<div class="section">
-  <app-alert></app-alert>
-</div>
+  <div class="section">
+    <app-alert></app-alert>
+  </div>
 
-<mat-toolbar class="navbar" color="primary">
-  <div>
+  <mat-toolbar class="navbar" color="primary">
+    <div>
       <button mat-icon-button>
-    <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
-    <span class="mat-title titre">Black 4</span>
-  </button>
-  </div>
+        <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+        <span class="mat-title titre">Music 4 All</span>
+      </button>
+    </div>
 
-  <div>
-    <span routerLink="/home">Home</span>
-    <span routerLink="/login" *ngIf="!currentUser">Login</span>
-    <span routerLink="/register" *ngIf="!currentUser">Registration</span>
-    <span (click)="logout()" *ngIf="currentUser">Logout</span>
-    <span routerLink="/authors">Authors</span>
-  </div>
-</mat-toolbar>
+    <div>
+      <span routerLink="/home">Home</span>
+      <span (click)="logout()" *ngIf="currentUser">Logout</span>
+      <span routerLink="/login" *ngIf="!currentUser">Login</span>
+      <span routerLink="/register" *ngIf="!currentUser">Registration</span>
+      <span routerLink="/authors">Authors</span>
+      <span routerLink="/admin" *ngIf="(currentUser && isAdmin)">Admin</span>
+    </div>
+  </mat-toolbar>
 
-<mat-sidenav-container>
-  <mat-sidenav #sidenav>
-    <mat-nav-list>
-      <a mat-list-item routerLink="/home"> Home </a>
-      <a mat-list-item routerLink="/register" *ngIf="!currentUser"> Registration </a> 
-      <a mat-list-item routerLink="/login" *ngIf="!currentUser"> Login </a> 
-      <a mat-list-item (click)="logout()" *ngIf="currentUser"> Logout </a>
-      <a mat-list-item routerLink="/authors"> Authors </a>
-      <a mat-list-item> Contacts </a>
-      <a mat-list-item> About </a>
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <router-outlet></router-outlet>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+  <mat-sidenav-container>
+    <mat-sidenav mode="side" #sidenav>
+      <mat-nav-list>
+        <a mat-list-item routerLink="/home" matListIcon><mat-icon>home</mat-icon> Home </a>
+        <a mat-list-item routerLink="/register" *ngIf="!currentUser"><mat-icon>home</mat-icon> Registration </a>
+        <a mat-list-item routerLink="/login" *ngIf="!currentUser"><mat-icon>home</mat-icon> Login </a>
+        <a mat-list-item (click)="logout()" *ngIf="currentUser"><mat-icon>home</mat-icon> Logout </a>
+        <a mat-list-item routerLink="/authors"><mat-icon>home</mat-icon> Authors </a>
+        <a mat-list-item><mat-icon>home</mat-icon> Contacts </a>
+        <a mat-list-item><mat-icon>home</mat-icon> About </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 
 
-<!-- <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+  <!-- <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
     <div class="container text-center">
       <small class="text-white">Copyright &copy; Black 4 Edition - 2020 France</small>
     </div>
@@ -53,7 +54,8 @@
   .bg {
     background: url('../assets/images/home/home_uni.png') no-repeat;
     width: 100%;
-    height: 4000px;
+    /* height: 4000px; */
+    height: 100%;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
